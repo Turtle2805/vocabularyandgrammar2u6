@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms Lê Hằng English - Chuyên Đề My House & Possessive Case</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #8854C0;
+            --secondary-bg: #FDCB6E;
+            --accent-bg: #00C9A7;
+            --correct: #00D26A;
+            --wrong: #FF4757;
+            --text-color: #2d3436;
+        }
+
+        * { box-sizing: border-box; font-family: 'Nunito', 'Quicksand', sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #ff7675);
+            background-size: 400% 400%;
+            animation: loangMauNen 14s ease infinite;
+            min-height: 100vh;
+            color: var(--text-color);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes loangMauNen {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Họa tiết biểu tượng ngôi nhà lơ lửng chuyển động mượt mà trên nền */
+        .bg-home-patterns {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 100 100"><text y="30" x="10" font-size="22">🏠</text><text y="85" x="70" font-size="24">🛏️</text><text y="40" x="75" font-size="22">🛋️</text><text y="90" x="15" font-size="24">🚪</text></svg>');
+            background-size: 150px 150px;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            animation: bayBongHọaTiet 28s linear infinite;
+        }
+
+        @pragma { animation: bayBongHọaTiet 28s linear infinite; }
+        @keyframes bayBongHọaTiet {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 150px 300px; }
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 3px dashed #dfe6e9;
+            padding-bottom: 15px;
+        }
+
+        .badge-teacher {
+            font-size: 1em;
+            color: #6c5ce7;
+            font-weight: 800;
+            background: #f1f2f6;
+            padding: 6px 18px;
+            border-radius: 14px;
+            display: inline-block;
+            border: 2px dashed #a29bfe;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border: 3px dashed #f59f00;
+            padding: 18px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            font-size: 1em;
+            color: #856404;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(245, 159, 0, 0.08);
+        }
+
+        .exercise-header {
+            background: #e8f5e9;
+            color: #1b5e20;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 6px solid #2e7d32;
+            font-size: 1.15em;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 3px solid #f1f2f6;
+            transition: all 0.3s ease;
+        }
+        .card:hover { border-color: #a29bfe; transform: translateY(-2px); }
+
+        .question-text {
+            font-size: 1.15em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #2d3436;
+            line-height: 1.5;
+        }
+
+        .options-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        @media(min-width: 600px) {
+            .options-layout { grid-template-columns: 1fr 1fr; }
+        }
+
+        .btn-opt {
+            padding: 15px 18px;
+            border: none;
+            border-radius: 18px;
+            font-size: 1.02em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 0 #b2bec3;
+            background: #f1f2f6;
+            text-align: left;
+            color: #2d3436;
+            line-height: 1.4;
+        }
+        .btn-opt:hover {
+            transform: scale(1.015);
+            background: #ffeaa7;
+            box-shadow: 0 5px 0 #fdcb6e;
+        }
+        .btn-opt:active { transform: translateY(5px); box-shadow: none !important; }
+
+        .btn-opt.correct {
+            background: var(--correct) !important;
+            color: white !important;
+            box-shadow: 0 5px 0 #00b894 !important;
+        }
+        .btn-opt.wrong {
+            background: var(--wrong) !important;
+            color: white !important;
+            box-shadow: 0 5px 0 #d63031 !important;
+            animation: rungGiat 0.4s ease;
+        }
+
+        @keyframes rungGiat {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .explanation-panel {
+            display: none;
+            margin-top: 15px;
+            padding: 18px;
+            background: #f8f9fa;
+            border-left: 6px solid #00b894;
+            border-radius: 14px;
+            font-size: 0.98em;
+            line-height: 1.7;
+            color: #2d3436;
+            animation: haCanh 0.4s ease;
+        }
+
+        @keyframes haCanh { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .sticky-submit-bar {
+            position: sticky;
+            bottom: 15px;
+            background: rgba(255,255,255,0.96);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.06);
+            z-index: 10;
+            margin-top: 40px;
+        }
+
+        .btn-submit-all {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.3em;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #4834d4;
+            transition: all 0.2s;
+        }
+        .btn-submit-all:hover { filter: brightness(1.08); transform: translateY(-2px); }
+        .btn-submit-all:active { transform: translateY(6px); box-shadow: none; }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-box {
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            animation: modalHienRa 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes modalHienRa { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .modal-box h2 { font-size: 2.2em; color: #6c5ce7; margin-top: 0; }
+        .modal-box p { font-size: 1.15em; font-weight: 700; color: #353b48; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="badge-teacher">Giáo viên tạo: Ms Lê Hằng English</div>
+    </header>
+
+    <div class="alert-box">
+        ⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️<br><br>
+        Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+        Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!<br>
+        <strong>* Kéo tới đâu, làm tới đó! *</strong>
+    </div>
+
+    <div id="quiz-load-zone"></div>
+
+    <div class="sticky-submit-bar">
+        <button class="btn-submit-all" onclick="nopBaiVaChamDiem()">Nộp Bài Xem Tổng Kết Điểm 🌟</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="result-overlay">
+    <div class="modal-box">
+        <h2>Kết Quả Bài Làm Của Con</h2>
+        <p id="txt-diem" style="font-size: 1.6em; color: #6c5ce7; font-weight: 800;"></p>
+        <p id="txt-nhan-xet"></p>
+        <button class="btn-submit-all" onclick="location.reload()" style="font-size: 1.1em; padding: 12px; margin-top: 15px;">LÀM LẠI BÀI TẬP</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+    const questionsRawData = [
+        // Exercise 4
+        {ex: "Exercise 4: Choose the odd one out", q: "1. Choose the odd one out:", opts: ["toilet", "garden", "yard", "classroom"], ans: "classroom", tag: "Tìm từ khác nhóm nhất.", hint: "'classroom' (lớp học) thuộc phạm vi học đường, ba từ còn lại là các bộ phận thuộc không gian ngôi nhà/sân vườn."},
+        {ex: "Exercise 4: Choose the odd one out", q: "2. Choose the odd one out:", opts: ["near", "between", "picture", "under"], ans: "picture", tag: "Tìm từ khác nhóm nhất.", hint: "'picture' (bức tranh) là danh từ, ba lựa chọn còn lại đều là giới từ chỉ vị trí."},
+        {ex: "Exercise 4: Choose the odd one out", q: "3. Choose the odd one out:", opts: ["pillow", "in", "shelf", "bed"], ans: "in", tag: "Tìm từ khác nhóm nhất.", hint: "'in' (bên trong) là giới từ, ba từ còn lại là các danh từ chỉ đồ dùng nội thất/vật dụng."},
+        {ex: "Exercise 4: Choose the odd one out", q: "4. Choose the odd one out:", opts: ["favorite", "cupboard", "sofa", "table"], ans: "favorite", tag: "Tìm từ khác nhóm nhất.", hint: "'favorite' (yêu thích) là tính từ miêu tả, ba từ còn lại là các danh từ chỉ đồ nội thất gia đình."},
+        {ex: "Exercise 4: Choose the odd one out", q: "5. Choose the odd one out:", opts: ["poster", "microwave", "furniture", "homework"], ans: "homework", tag: "Tìm từ khác nhóm nhất.", hint: "'homework' (bài tập về nhà) liên quan đến trường học, các từ khác thuộc chủ đề vật dụng trong nhà."},
+        {ex: "Exercise 4: Choose the odd one out", q: "6. Choose the odd one out:", opts: ["kitchen", "bathroom", "living room", "cupboard"], ans: "cupboard", tag: "Tìm từ khác nhóm nhất.", hint: "'cupboard' (tủ chén ly) là tên đồ nội thất cụ thể, ba từ còn lại là danh từ chỉ các phòng chức năng."},
+        {ex: "Exercise 4: Choose the odd one out", q: "7. Choose the odd one out:", opts: ["country house", "flat", "cooker", "town house"], ans: "cooker", tag: "Tìm từ khác nhóm nhất.", hint: "'cooker' (bếp nấu) là đồ gia dụng, các phương án còn lại đều là các mô hình nhà ở khác nhau."},
+        {ex: "Exercise 4: Choose the odd one out", q: "8. Choose the odd one out:", opts: ["bowls", "chopsticks", "sofa", "dishwasher"], ans: "sofa", tag: "Tìm từ khác nhóm nhất.", hint: "'sofa' là ghế đặt ở phòng khách, ba từ còn lại là dụng cụ/thiết bị phục vụ ăn uống trong nhà bếp."},
+        {ex: "Exercise 4: Choose the odd one out", q: "9. Choose the odd one out:", opts: ["hall", "shelf", "lamp", "toilet"], ans: "toilet", tag: "Tìm từ khác nhóm nhất.", hint: "'toilet' thường nằm biệt lập trong không gian phòng tắm, ba từ còn lại thuộc không gian sinh hoạt/hành lang chính."},
+        {ex: "Exercise 4: Choose the odd one out", q: "10. Choose the odd one out:", opts: ["on", "fridge", "under", "in"], ans: "fridge", tag: "Tìm từ khác nhóm nhất.", hint: "'fridge' (tủ lạnh) là danh từ chỉ vật dụng, ba từ còn lại là hệ thống giới từ vị trí."},
+
+        // Exercise 5
+        {ex: "Exercise 5: Choose the correct answer", q: "1. My house is ___________ Mai Dich Street.", opts: ["under", "on", "between", "at"], ans: "on", tag: "Nhà của mình nằm trên đường Mai Dịch.", hint: "Quy tắc dùng giới từ chỉ vị trí: Sử dụng giới từ 'on' đứng trước tên của các con đường (Street)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "2. Mike is ___________ brother.", opts: ["Johns’", "John", "John’s", "John’"], ans: "John’s", tag: "Mike là anh/em trai của John.", hint: "Sở hữu cách của danh từ số ít chỉ người (John) lập bằng cách thêm đuôi '’s' ngay sau tên."},
+        {ex: "Exercise 5: Choose the correct answer", q: "3. Let’s ___________ to the cinema.", opts: ["go", "to go", "going", "to going"], ans: "go", tag: "Chúng mình cùng đi tới rạp chiếu phim đi.", hint: "Cấu trúc lời mời/đề nghị tập thể: 'Let's + Động từ nguyên mẫu không to (V-inf)'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "4. There are two pictures ___________ the wall.", opts: ["on", "between", "under", "in front of"], ans: "on", tag: "Có hai bức tranh đang được treo trên bức tường.", hint: "Vật thể tiếp xúc cố định trên bề mặt phẳng thẳng đứng như bức tường dùng giới từ 'on'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "5. My house has got two ___________.", opts: ["living room", "kitchen", "bathrooms", "bedroom"], ans: "bathrooms", tag: "Ngôi nhà của tôi có hai phòng tắm.", hint: "Sau số từ định lượng số nhiều từ hai trở lên 'two', danh từ theo sau bắt buộc chia số nhiều thêm s/es."},
+        {ex: "Exercise 5: Choose the correct answer", q: "6. I have a picture of my family ______ the wall of my bedroom.", opts: ["near", "next to", "on", "in"], ans: "on", tag: "Tớ có một bức ảnh gia đình treo trên tường phòng ngủ.", hint: "Treo áp sát lên bề mặt bức tường ta dùng giới từ không gian vị trí 'on the wall'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "7. Sarah puts her clothes ______ the wardrobe.", opts: ["under", "from", "in", "at"], ans: "in", tag: "Sarah cất giữ quần áo của cô ấy vào trong tủ đồ.", hint: "Cất đồ đạc nằm gọn lọt thỏm bên trong không gian đóng kín của tủ quần áo ta sử dụng giới từ 'in'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "8. Where’s Katie? She’s over there. She’s standing ______ Jack.", opts: ["in front", "under", "next to", "between"], ans: "next to", tag: "Katie ở đâu thế? Cô ấy đằng kia kìa. Cô ấy đang đứng kế bên cạnh Jack.", hint: "Giới từ chỉ vị trí ngay bên cạnh là 'next to'. Cụm 'in front' bị sai vì thiếu từ 'of' đi kèm."},
+        {ex: "Exercise 5: Choose the correct answer", q: "9. The bicycle is ______ the car and the motorbike.", opts: ["next", "between", "in", "under"], ans: "between", tag: "Chiếc xe đạp nằm ở chính giữa chiếc ô tô và chiếc xe máy.", hint: "Cấu trúc giới từ chỉ vị trí ở giữa hai vật thể xác định: 'between X and Y'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "10. There are many things ______ the desk: a pen, a pencil, two books and four rulers.", opts: ["between", "at", "front", "on"], ans: "on", tag: "Có rất nhiều đồ vật ở trên mặt bàn học: một chiếc bút, một chiếc bút chì, hai quyển sách và bốn chiếc thước kẻ.", hint: "Các đồ vật đặt nằm bên trên bề mặt phẳng nằm ngang của bàn học dùng giới từ tiếp xúc 'on'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "11. My mum is in the ______. She's cooking dinner.", opts: ["living room", "kitchen", "bedroom", "garden"], ans: "kitchen", tag: "Mẹ của tớ đang ở trong phòng bếp. Bà ấy đang nấu bữa tối.", hint: "Hành động nấu nướng bữa ăn ('cooking dinner') mặc định diễn ra tại phòng bếp ('kitchen')."},
+        {ex: "Exercise 5: Choose the correct answer", q: "12. A ______ is the area just inside the main entrance of a house.", opts: ["bathroom", "living room", "hall", "bedroom"], ans: "hall", tag: "Sảnh đón / hành lang chính là khu vực nằm ngay phía trong lối vào chính của ngôi nhà.", hint: "Định nghĩa từ vựng: 'hall' chỉ không gian sảnh đón hoặc hành lang nối liền cửa chính dẫn vào các phòng."},
+        {ex: "Exercise 5: Choose the correct answer", q: "13. You should keep your food in the ______ to preserve it.", opts: ["cupboard", "sink", "dishwasher", "fridge"], ans: "fridge", tag: "Bạn nên bảo quản thức ăn của mình trong tủ lạnh để giữ nó tươi ngon.", hint: "Thiết bị chuyên dụng chạy điện dùng để lưu trữ giữ lạnh bảo quản thực phẩm là 'fridge' (tủ lạnh)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "14. There are clothes on the floor. It’s ______.", opts: ["interesting", "mess", "messes", "messy"], ans: "messy", tag: "Quần áo vứt bừa bãi đầy trên sàn nhà. Thật là lộn xộn bừa bộn.", hint: "Sau cấu trúc động từ nối 'It’s' (It is) cần điền tính từ miêu tả đặc điểm tính chất của căn phòng: 'messy'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "15. I love my bedroom because it’s ______.", opts: ["comfortable", "uncomfortable", "comfort", "uncomfort"], ans: "comfortable", tag: "Tớ yêu phòng ngủ của mình lắm vì nó rất thoải mái, dễ chịu.", hint: "Vế trước mang nghĩa tích cực bày tỏ sự yêu thích ('I love'), vì vậy tính từ lý do đi sau phải mang nghĩa tốt: 'comfortable'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "16. Turn on the ______, please. It's so hot in here.", opts: ["cupboard", "dishwasher", "air conditioner", "lamp"], ans: "air conditioner", tag: "Làm ơn bật máy điều hòa nhiệt độ lên với. Trong này nóng bức quá.", hint: "Vì ngữ cảnh phòng ốc đang có nhiệt độ cao nóng nực ('so hot'), ta cần khởi động thiết bị làm mát không khí 'air conditioner'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "17. I ______ an ______ with three friends in Ha Noi.", opts: ["share - apartment", "move – attic", "share - furniture", "move - country house"], ans: "share - apartment", tag: "Tớ ở chung một căn hộ chung cư với ba người bạn tại Hà Nội.", hint: "Mạo từ 'an' yêu cầu từ đi liền sau bắt đầu bằng một nguyên âm. Cụm từ 'share an apartment' nghĩa là góp tiền ở chung căn hộ."},
+        {ex: "Exercise 5: Choose the correct answer", q: "18. I put my clothes in the ______ at the corner of my bedroom.", opts: ["chest of drawers", "hall", "kitchen", "wall"], ans: "chest of drawers", tag: "Tớ cất quần áo của mình vào tủ có nhiều ngăn kéo ở góc phòng ngủ.", hint: "'Chest of drawers' là tên loại tủ thấp có nhiều ngăn kéo chuyên dụng chứa đồ cá nhân tiện lợi."},
+        {ex: "Exercise 5: Choose the correct answer", q: "19. You must be ______ to lend him your motorbike. He's very careless.", opts: ["crazy", "attic", "interesting", "care"], ans: "crazy", tag: "Bạn hẳn phải điên rồ lắm mới cho cậu ta mượn xe máy. Cậu ta cẩu thả lắm đấy.", hint: "Tính từ 'crazy' (điên rồ/mất trí) dùng để nhấn mạnh sự bất ngờ, không tán thành trước một quyết định rủi ro."},
+        {ex: "Exercise 5: Choose the correct answer", q: "20. The children played in the school ______.", opts: ["big", "yard", "there", "roof"], ans: "yard", tag: "Lũ trẻ con đang vui chơi ở ngoài sân trường.", hint: "Cụm danh từ ghép chỉ khoảng sân chơi trong khuôn viên trường học: 'school yard'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "21. Mary is sitting ______ me. I can’t see anything.", opts: ["behind", "in front of", "between", "under"], ans: "in front of", tag: "Mary đang ngồi ngay ở phía trước mặt tớ. Tớ chẳng thể nhìn thấy gì cả.", hint: "Vì người ngồi trước che khuất hoàn toàn tầm nhìn hướng lên trên nên dùng giới từ chỉ vị trí 'in front of'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "22. They have a beautiful garden ______ the house.", opts: ["under", "at", "between", "behind"], ans: "behind", tag: "Họ sở hữu một khu vườn tuyệt đẹp nằm ở phía sau ngôi nhà.", hint: "Khu sân vườn bao quanh thường được thiết kế nằm khuất ở phía sau tòa nhà, tương ứng giới từ 'behind'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "23. Don’t stand ______ the TV! We are watching Tom and Jerry!", opts: ["behind", "next to", "under", "in front of"], ans: "in front of", tag: "Đừng đứng chắn trước màn hình tivi chứ! Chúng tớ đang xem phim hoạt hình Tom và Jerry mà!", hint: "Hành động đứng che mất tầm nhìn của màn hình tivi gọi là đứng ở phía trước: 'in front of'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "24. Is there any food ______ the fridge? I’m so hungry!", opts: ["in", "near", "between", "under"], ans: "in", tag: "Có còn chút đồ ăn nào bên trong tủ lạnh không? Con đói bụng quá!", hint: "Đồ vật thực phẩm nằm chứa đựng bên trong không gian tủ lạnh dùng giới từ 'in'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "25. Never stand ______ a tree when it is raining.", opts: ["at", "under", "in", "between"], ans: "under", tag: "Không bao giờ được đứng dưới một bóng cây khi trời đang đổ mưa giông.", hint: "Vị trí nằm dưới tán lá vòm cây dùng giới từ 'under' (quy tắc an toàn phòng chống sét đánh)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "26. I met Charles while I was in ______.", opts: ["town", "clock", "going", "people"], ans: "town", tag: "Tớ đã tình cờ gặp Charles khi tớ đang ở trên thị trấn / trung tâm phố.", hint: "Cụm cụm từ cố định chỉ việc đang ở khu trung tâm đô thị sinh hoạt: 'in town'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "27. Jeans are an indispensable part of most people's ______.", opts: ["toilet", "wardrobe", "kitchen", "bed"], ans: "wardrobe", tag: "Quần jean là một phần không thể thiếu trong bộ sưu tập tủ quần áo của hầu hết mọi người.", hint: "'Wardrobe' ngoài nghĩa tủ gỗ chứa đồ còn mang nghĩa rộng chỉ toàn bộ số lượng quần áo thời trang sở hữu."},
+        {ex: "Exercise 5: Choose the correct answer", q: "28. Did you put the car in the ______?", opts: ["meal", "still", "lake", "garage"], ans: "garage", tag: "Cậu đã đánh xe ô tô cất vào trong nhà để xe chưa?", hint: "Không gian nhà xe chuyên dụng mái che đỗ xe cộ trong gia đình gọi là 'garage'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "29. Don't forget to put the milk back in the ______.", opts: ["sun", "fridge", "keep", "smell"], ans: "fridge", tag: "Đừng quên cất sữa quay trở lại vào trong tủ lạnh nhé.", hint: "Sữa tươi cần bảo quản nhiệt độ thấp bên trong tủ lạnh 'fridge' để ngăn chặn vi khuẩn làm chua hỏng."},
+        {ex: "Exercise 5: Choose the correct answer", q: "30. - Where should we go to buy some clothes, fruits and food? - In ______.", opts: ["a hall", "a living room", "a department store", "a stilt house"], ans: "a department store", tag: "- Chúng ta nên đi đâu để mua quần áo, hoa quả và thực phẩm cùng lúc nhỉ? - Đến cửa hàng bách hóa.", hint: "'Department store' là trung tâm thương mại / cửa hàng bách hóa lớn chia nhiều khu bán đủ loại mặt hàng tạp hóa."},
+        {ex: "Exercise 5: Choose the correct answer", q: "31. My aunt is cooking in the ______.", opts: ["living room", "bath", "kitchen", "hall"], ans: "kitchen", tag: "Dì của tớ đang nấu nướng ở bên trong phòng bếp.", hint: "Hành động nấu ăn đun nấu thực phẩm mặc định diễn ra tại căn phòng bếp 'kitchen'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "32. We live in a town house, but our grandparents live in a ______ house.", opts: ["city", "villa", "country", "apartment"], ans: "country", tag: "Chúng tớ sống ở nhà phố, nhưng ông bà của chúng tớ lại sống trong một ngôi nhà ở nông thôn.", hint: "Cụm danh từ đối lập loại hình nhà ở thành thị (town house) là nhà vườn nông thôn: 'country house'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "33. I really like the ______ of the kitchen in your house.", opts: ["beautiful", "beauty", "friendly", "unfriendly"], ans: "beauty", tag: "Tớ thực sự rất thích vẻ đẹp của căn bếp trong ngôi nhà của cậu.", hint: "Sau mạo từ chỉ định 'the' đứng trước giới từ sở hữu 'of' bắt buộc điền một danh từ làm trung tâm ngữ: 'beauty'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "34. We have a fridge, a ______ and a cupboard in our kitchen.", opts: ["cook", "cooking", "cooker", "cooked"], ans: "cooker", tag: "Chúng tôi có một chiếc tủ lạnh, một chiếc bếp nấu và một chiếc tủ chạn ở trong bếp.", hint: "Danh từ chỉ thiết bị gia dụng dùng để đun nấu năng lượng nhiệt trong nhà bếp là 'cooker' (bếp nấu)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "35. There are ______ bowls and chopsticks on his desk.", opts: ["dirties", "dirtying", "dirt", "dirty"], ans: "dirty", tag: "Có những chiếc bát và đôi đũa bẩn đặt ở trên bàn làm việc của anh ấy.", hint: "Vị trí đứng trước bổ nghĩa trực tiếp cho cụm danh từ 'bowls and chopsticks' yêu cầu một tính từ: 'dirty'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "36. Don't run the ______ half empty. It wastes energy.", opts: ["dishwasher", "kitchen", "wardrobe", "sink"], ans: "dishwasher", tag: "Đừng vận hành máy rửa bát khi đồ xếp mới đầy một nửa. Việc đó gây lãng phí năng lượng.", hint: "Thiết bị điện gia dụng chạy chu trình rửa đồ gia đình tiêu tốn điện nước là 'dishwasher' (máy rửa bát)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "37. Would you mind helping me hang this dress in the ______?", opts: ["sofa", "sink", "wardrobe", "vase"], ans: "wardrobe", tag: "Cậu có phiền giúp tớ treo chiếc váy này vào trong tủ quần áo được không?", hint: "Hành động treo quần áo váy đầm dài ('hang this dress') tương thích với không gian cất giữ của 'wardrobe'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "38. A ______ is a piece of electrical equipment to store food and keep food cold or fresh.", opts: ["fridge", "dishwasher", "microwave", "cooker"], ans: "fridge", tag: "Tủ lạnh là một thiết bị điện dùng để lưu trữ thực phẩm và giữ cho thực phẩm luôn lạnh hoặc tươi ngon.", hint: "Định nghĩa chính xác của thiết bị điện lạnh gia dụng bảo quản đồ ăn: 'fridge' (tủ lạnh)."},
+        {ex: "Exercise 5: Choose the correct answer", q: "39. We had a drink on the hotel ______.", opts: ["balcony", "lovely", "sit", "nice"], ans: "balcony", tag: "Chúng tôi đã cùng ngồi uống nước giải khát ngoài ban công khách sạn.", hint: "Không gian ban công nhô ra ngoài trời của phòng khách sạn nhìn ra cảnh quan gọi là 'balcony'."},
+        {ex: "Exercise 5: Choose the correct answer", q: "40. He likes to have breakfast in ______ on a Saturday morning.", opts: ["friend", "bed", "month", "than"], ans: "bed", tag: "Anh ấy thích được phục vụ ăn bữa sáng ngay tại trên giường vào mỗi sáng thứ Bảy.", hint: "Cụm từ thành ngữ cố định chỉ thói quen lười biếng thư giãn buổi sáng: 'have breakfast in bed'."},
+
+        // Exercise 6
+        {ex: "Exercise 6: Choose the correct options", q: "1. ______ likes watching YouTube but ______ sister doesn’t.", opts: ["Bob / Bob’s", "Bob’s / Bob", "Bob / Bob", "Bob’s / Bob’s"], ans: "Bob / Bob’s", tag: "Bob thích xem YouTube nhưng chị/em gái của Bob thì không.", hint: "Vị trí một làm chủ ngữ chỉ người 'Bob'. Vị trí hai đứng trước danh từ 'sister' cần dạng sở hữu cách 'Bob's'."},
+        {ex: "Exercise 6: Choose the correct options", q: "2. ______ bedroom is beautiful and ______ loves it a lot.", opts: ["Kate’s / Jim", "Kate / Jim", "Jim / Kate’s", "Kate’s / Jim’s"], ans: "Kate’s / Jim", tag: "Phòng ngủ của Kate rất đẹp và Jim cực kỳ yêu thích nó.", hint: "Vị trí một bổ nghĩa sở hữu cho danh từ phòng ngủ đứng sau nên cần dùng sở hữu cách 'Kate's'. Vị trí hai làm chủ ngữ chỉ người 'Jim'."},
+        {ex: "Exercise 6: Choose the correct options", q: "3. ______ favorite food is chicken but ______ likes pizza.", opts: ["My sister’s / my brother", "my brother / my sister’s", "my sister / my brother’s", "my sister’s / my brother’s"], ans: "My sister’s / my brother", tag: "Món ăn yêu thích của chị gái tôi là thịt gà nhưng em trai tôi lại thích ăn pizza.", hint: "Vị trí đầu bổ nghĩa quyền sở hữu món ăn yêu thích cần dạng sở hữu cách 'My sister's'. Vị trí hai làm chủ ngữ hành động thường 'my brother'."},
+        {ex: "Exercise 6: Choose the correct options", q: "4. There is a TV behind ______. ______ book is on it.", opts: ["Kim / Henry’s", "Henry’s / Kim", "Kim’s / Henry", "Kim / Henry"], ans: "Kim / Henry’s", tag: "Có một chiếc tivi ở phía sau Kim. Quyển sách của Henry đang nằm trên chiếc tivi đó.", hint: "Vị trí đầu làm tân ngữ sau giới từ chỉ người nên giữ nguyên 'Kim'. Vị trí hai chỉ chủ sở hữu của cuốn sách nên cần dạng sở hữu cách 'Henry's'."},
+        {ex: "Exercise 6: Choose the correct options", q: "5. ______ is cleaning ______ room.", opts: ["My mother / my grandmother’s", "My mother’s / my grandmother", "my grandmother / my mother’s", "my mother / my grandmother"], ans: "My mother / my grandmother’s", tag: "Mẹ của tớ đang lau dọn phòng của bà nội/ngoại tớ.", hint: "Vị trí một làm chủ ngữ chính 'My mother'. Vị trí hai đứng trước danh từ không gian căn phòng 'room' cần chia sở hữu cách 'my grandmother's'."},
+
+        // Exercise 7
+        {ex: "Exercise 7: CLOSEST in meaning", q: "1. Mum, I LOVE my old bed room. It’s so comfortable. (Từ đồng nghĩa với 'LOVE')", opts: ["like", "hate", "dislike", "tidy"], ans: "like", tag: "Mẹ ơi, con yêu phòng ngủ cũ của con lắm. Nó thật thoải mái.", hint: "Động từ biểu thị cảm xúc tích cực yêu thích 'love' có nghĩa gần gũi nhất trong nhóm lựa chọn là 'like' (thích)."},
+        {ex: "Exercise 7: CLOSEST in meaning", q: "2. Ann’s bedroom is big but MESSY. (Từ đồng nghĩa với 'MESSY')", opts: ["untidy", "uncomfortable", "comfortable", "tidy"], ans: "untidy", tag: "Phòng ngủ của Ann rộng lớn nhưng rất bừa bộn.", hint: "Tính từ chỉ trạng thái phòng ốc đồ đạc lộn xộn mất trật tự: 'messy' đồng nghĩa với 'untidy'."},
+        {ex: "Exercise 7: CLOSEST in meaning", q: "3. We are staying in a big room and the window has a STRANGE shape. (Từ đồng nghĩa với 'STRANGE')", opts: ["unusual", "simple", "beautiful", "new"], ans: "unusual", tag: "Chúng tôi đang ở trong một căn phòng lớn và chiếc cửa sổ có hình thù kỳ lạ.", hint: "Tính từ chỉ đặc điểm kỳ lạ, khác thường, khác biệt số đông: 'strange' đồng nghĩa với từ 'unusual'."},
+        {ex: "Exercise 7: CLOSEST in meaning", q: "4. There is a CRAZY house hotel in Da Lat city. (Từ đồng nghĩa với 'CRAZY')", opts: ["wonderful", "beautiful", "comfortable", "horror"], ans: "wonderful", tag: "Có một khách sạn ngôi nhà kỳ quái độc lạ ở thành phố Đà Lạt.", hint: "Trong ngữ cảnh ca ngợi kiến trúc độc đáo, sáng tạo đột phá thu hút khách của biệt thự Hằng Nga (Crazy House), 'crazy' mang nghĩa kỳ diệu, gần nghĩa nhất với từ 'wonderful'."},
+        {ex: "Exercise 7: CLOSEST in meaning", q: "5. Her FAVOURITE room is her bedroom. (Từ đồng nghĩa với 'FAVOURITE')", opts: ["beautiful", "interesting", "boring", "big"], ans: "beautiful", tag: "Căn phòng yêu thích nhất của cô ấy chính là phòng ngủ.", hint: "Do giới hạn hệ thống 4 đáp án gốc của đề bài, tính từ tích cực mang sắc thái yêu mến, khen ngợi phòng ốc tương đồng nhất là 'beautiful'."},
+
+        // Exercise 8
+        {ex: "Exercise 8: OPPOSITE in meaning", q: "1. The cat is IN FRONT OF the chair. (Từ trái nghĩa với 'IN FRONT OF')", opts: ["behind", "next to", "on", "under"], ans: "behind", tag: "Con mèo đang ở phía trước chiếc ghế.", hint: "Đối lập hoàn toàn với vị trí ở ngay phía đằng trước mặt 'in front of' là vị trí phía đằng sau lưng 'behind'."},
+        {ex: "Exercise 8: OPPOSITE in meaning", q: "2. Mai DISLIKES her room because it’s small. (Từ trái nghĩa với 'DISLIKES')", opts: ["loves", "hates", "bored", "sad"], ans: "loves", tag: "Mai ghét căn phòng của cô ấy vì nó nhỏ bé.", hint: "Trái ngược hoàn toàn với động từ chán ghét, không thích 'dislikes' chính là động từ yêu mến 'loves'."},
+        {ex: "Exercise 8: OPPOSITE in meaning", q: "3. There is a cap UNDER the pillow. (Từ trái nghĩa với 'UNDER')", opts: ["on", "behind", "to the left", "near"], ans: "on", tag: "Có một chiếc mũ lưỡi trai nằm dưới chiếc gối.", hint: "Trái ngược với giới từ chỉ vị trí nằm khuất ở bên dưới 'under' là giới từ vị trí nằm phía trên bề mặt 'on'."},
+        {ex: "Exercise 8: OPPOSITE in meaning", q: "4. The room is COOL in the summer because there is a ceiling fan. (Từ trái nghĩa với 'COOL')", opts: ["hot", "comfortable", "tidy", "cozy"], ans: "hot", tag: "Căn phòng rất mát mẻ vào mùa hè nhờ có một chiếc quạt trần.", hint: "Trái ngược hoàn toàn với trạng thái nhiệt độ mát mẻ dễ chịu 'cool' là tính từ 'hot' (nóng bức)."},
+        {ex: "Exercise 8: OPPOSITE in meaning", q: "5. There is a MODERN fridge in the kitchen. (Từ trái nghĩa với 'MODERN')", opts: ["old", "new", "big", "strange"], ans: "old", tag: "Có một chiếc tủ lạnh hiện đại ở bên trong phòng bếp.", hint: "Trái ngược hoàn toàn với tính từ chỉ đặc điểm tối tân hiện đại 'modern' là tính từ 'old' (cũ kỹ / cổ xưa)."},
+
+        // Exercise 10
+        {ex: "Exercise 10: Choose the correct possessive form", q: "1. There are three bathrooms in ______ house.", opts: ["Tim’s", "Tims’"], ans: "Tim’s", tag: "Có ba phòng tắm ở trong ngôi nhà của Tim.", hint: "Sở hữu cách của một danh từ riêng số ít chỉ người (Tim) là thêm dấu nháy đơn kèm chữ s ('Tim's')."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "2. Her ______ room is next to the living room.", opts: ["sister’s", "sisters’"], ans: "sister’s", tag: "Phòng của em gái cô ấy nằm ngay cạnh phòng khách.", hint: "Tính từ định hạn sở hữu đứng đầu 'Her' mang tính chất số ít, nên danh từ cần chia là 'sister's' (của một người em gái)."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "3. It's the ______ toy.", opts: ["boy's", "boy'"], ans: "boy's", tag: "Đó là món đồ chơi của cậu bé.", hint: "Danh từ số ít đếm được 'boy' khi tạo hình thái sở hữu cách bắt buộc phải viết thêm '’s'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "4. These are the ______ pencils.", opts: ["boys'", "boys's"], ans: "boys'", tag: "Đây là những chiếc bút chì của các cậu bé.", hint: "Danh từ số nhiều có sẵn chữ s ở tận cùng đuôi ('boys') khi làm sở hữu cách chỉ cần đánh thêm một dấu nháy đơn đứng ở cuối cùng ('boys'')."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "5. They're ______ shorts.", opts: ["Tom's", "Tom'"], ans: "Tom's", tag: "Chúng là chiếc quần đùi của Tom.", hint: "Sở hữu cách tên riêng số ít độc lập thêm '’s': 'Tom's shorts'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "6. My ______ car was not expensive.", opts: ["parents’", "parents's"], ans: "parents’", tag: "Xe ô tô của bố mẹ tôi không hề đắt đỏ.", hint: "Danh từ số nhiều chỉ cả cha lẫn mẹ kết thúc bằng s ('parents') lập sở hữu cách bằng cách thêm dấu nháy đơn ở cuối cùng ('parents'')."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "7. This is my ______ book.", opts: ["brother's", "brother"], ans: "brother's", tag: "Đây là quyển sách của anh trai tôi.", hint: "Cần hình thái sở hữu cách đứng bổ nghĩa sở hữu cho danh từ quyển sách đặt phía sau."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "8. My ______ bedroom is next to the living room.", opts: ["sister's", "sister"], ans: "sister's", tag: "Phòng ngủ của chị gái tôi nằm bên cạnh phòng khách.", hint: "Cần dạng sở hữu cách 'sister's' làm rõ chủ quyền đối với căn phòng ngủ đứng liền kề."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "9. This is my ______ bike.", opts: ["brother’s", "brothers"], ans: "brother’s", tag: "Đây là chiếc xe đạp của anh trai tôi.", hint: "Dạng sở hữu cách chuẩn mực của một người anh trai số ít: 'brother's'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "10. The ______ room is upstairs.", opts: ["children's", "children"], ans: "children's", tag: "Phòng của lũ trẻ nằm ở trên tầng.", hint: "'Children' là danh từ số nhiều tập hợp bất quy tắc không kết thúc bằng s, do đó khi tạo sở hữu cách vẫn phải thêm đầy đủ '’s'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "11. There is a TV in ______ bedroom.", opts: ["Elena's", "Elena"], ans: "Elena's", tag: "Có một chiếc tivi ở trong phòng ngủ của Elena.", hint: "Sở hữu cách của danh từ riêng chỉ tên một người số ít: 'Elena's'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "12. ______ boat house look very strange.", opts: ["Mr Green’s", "Mr Greens’"], ans: "Mr Green’s", tag: "Ngôi nhà thuyền của ông Green trông rất kỳ lạ.", hint: "Tên người đàn ông số ít 'Mr Green' lập sở hữu cách bằng cách thêm đuôi '’s'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "13. My ______ garden is full of beautiful flowers.", opts: ["grandparents’", "grandparents"], ans: "grandparents’", tag: "Khu vườn của ông bà tôi tràn ngập những bông hoa xinh đẹp.", hint: "Danh từ số nhiều chỉ chung ông bà kết thúc sẵn bằng s ('grandparents') lập sở hữu cách chỉ cần đánh thêm dấu nháy đơn ở cuối."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "14. Where is ______ laptop?", opts: ["Nam's", "Nam"], ans: "Nam's", tag: "Máy tính xách tay của Nam ở đâu thế?", hint: "Sở hữu cách tên riêng số ít: 'Nam's'."},
+        {ex: "Exercise 10: Choose the correct possessive form", q: "15. ______ house is big.", opts: ["Mai's", "Mai’"], ans: "Mai's", tag: "Ngôi nhà của Mai rất to lớn.", hint: "Sở hữu cách của tên riêng chỉ một người số ít: 'Mai's'."},
+
+        // Exercise 11
+        {ex: "Exercise 11: Fill in the blank", q: "1. Are you in the ______? - Yes, I am.", opts: ["kitchen", "flat", "sofa", "between", "Mike's"], ans: "kitchen", tag: "Bạn đang ở trong phòng bếp phải không? - Đúng vậy, tôi đang ở đây.", hint: "Danh từ chỉ phòng ốc duy nhất phù hợp đứng trong cấu trúc câu hỏi vị trí sinh hoạt gia đình là 'kitchen'."},
+        {ex: "Exercise 11: Fill in the blank", q: "2. His grandmom lives in a large ______ on the 25th floor of this building.", opts: ["flat", "kitchen", "sofa", "between", "Mike's"], ans: "flat", tag: "Bà của cậu ấy sống trong một căn hộ lớn nằm trên tầng 25 của tòa nhà này.", hint: "Loại hình nhà ở phân bổ nằm trên một sàn của một tòa nhà chung cư cao tầng gọi là 'flat' (căn hộ chung cư)."},
+        {ex: "Exercise 11: Fill in the blank", q: "3. What's in her room? - A ______ and a lamp.", opts: ["sofa", "flat", "kitchen", "between", "Mike's"], ans: "sofa", tag: "Có những đồ vật gì ở trong phòng của cô ấy thế? - Một chiếc ghế sô-pha và một chiếc đèn.", hint: "Danh từ chỉ đồ đạc nội thất phòng ốc song hành cùng chiếc đèn trang trí thích hợp là 'sofa'."},
+        {ex: "Exercise 11: Fill in the blank", q: "4. That is ______ town house.", opts: ["Mike's", "flat", "kitchen", "sofa", "between"], ans: "Mike's", tag: "Đó là ngôi nhà phố của Mike.", hint: "Cần một danh từ dạng sở hữu cách đứng trước cụm danh từ 'town house' để bổ nghĩa sở hữu tài sản: 'Mike's'."},
+        {ex: "Exercise 11: Fill in the blank", q: "5. I am standing ______ Hoa and her grandfather.", opts: ["between", "flat", "kitchen", "sofa", "Mike's"], ans: "between", tag: "Tôi đang đứng ở giữa Hoa và ông nội của cô ấy.", hint: "Giới từ chỉ vị trí đứng xen giữa hai đối tượng cụ thể liên kết bằng từ nối 'and': 'between A and B'."},
+
+        // Exercise 12
+        {ex: "Exercise 12: Sentence Transformation (Possessive)", q: "1. John has a sister, Jane. ➔ John is ______", opts: ["Jane's brother", "brother of Jane", "Jane brother", "brother's Jane"], ans: "Jane's brother", tag: "John có một người em gái tên là Jane. ➔ John là anh trai của Jane.", hint: "Thiết lập sở hữu cách biểu thị mối quan hệ huyết thống thân nhân gia đình: Tên + '’s' + mối quan hệ."},
+        {ex: "Exercise 12: Sentence Transformation (Possessive)", q: "2. The dog that is barking belongs to Ben. ➔ It is ______", opts: ["Ben's dog", "dog of Ben", "Ben dog", "dog's Ben"], ans: "Ben's dog", tag: "Con chó đang sủa đó thuộc sở hữu của Ben. ➔ Nó là con chó của Ben.", hint: "Chuyển cấu trúc thuộc quyền sở hữu 'belongs to Ben' sang cấu trúc từ hạn định sở hữu cách: 'Ben's dog'."},
+        {ex: "Exercise 12: Sentence Transformation (Possessive)", q: "3. These bikes belong to my brothers. ➔ These are ______", opts: ["my brothers' bikes", "my brother's bikes", "bikes of my brothers", "my brothers bikes"], ans: "my brothers' bikes", tag: "Những chiếc xe đạp này thuộc về các anh trai của tôi. ➔ Đây là những chiếc xe đạp của các anh trai tôi.", hint: "Vì danh từ gốc số nhiều 'brothers' kết thúc bằng s, khi làm sở hữu cách chỉ thêm dấu nháy đơn ở cuối cùng."},
+        {ex: "Exercise 12: Sentence Transformation (Possessive)", q: "4. The boy has a toy. ➔ It's ______", opts: ["the boy's toy", "the boys' toy", "toy of the boy", "the boy toy"], ans: "the boy's toy", tag: "Cậu bé có một món đồ chơi. ➔ Nó là món đồ chơi của cậu bé.", hint: "Danh từ xác định số ít 'the boy' lập sở hữu cách bằng cách thêm đuôi '’s': 'the boy's toy'."},
+        {ex: "Exercise 12: Sentence Transformation (Possessive)", q: "5. Nick has a Russian book. ➔ It's ______", opts: ["Nick's Russian book", "Nick Russian book", "Russian book of Nick", "Nick' Russian book"], ans: "Nick's Russian book", tag: "Nick có một cuốn sách tiếng Nga. ➔ Nó là cuốn sách tiếng Nga của Nick.", hint: "Danh từ riêng chỉ một người số ít Nick lập sở hữu cách bằng cách đánh thêm '’s': 'Nick's Russian book'."},
+
+        // Exercise 13
+        {ex: "Exercise 13: Complete with the correct word form", q: "1. My house has a lot of ______ for special occasions. (decorate)", opts: ["decorations", "decorative", "decorators", "decorating"], ans: "decorations", tag: "Ngôi nhà của tôi có rất nhiều đồ vật trang trí cho các dịp đặc biệt.", hint: "Sau cụm từ chỉ định lượng số nhiều 'a lot of' cần một danh từ đếm được dạng số nhiều thêm s làm tân ngữ câu: 'decorations'."},
+        {ex: "Exercise 13: Complete with the correct word form", q: "2. My bed is very ______ after a long day at school. (comfort)", opts: ["comfortable", "comfort", "comfortably", "uncomfortable"], ans: "comfortable", tag: "Chiếc giường của tớ rất thoải mái, dễ chịu sau một ngày dài ở trường.", hint: "Đứng sau hệ thống trợ động từ nối liên kết tobe 'is' được bổ trợ bằng trạng từ mức độ 'very' cần điền tính từ: 'comfortable'."},
+        {ex: "Exercise 13: Complete with the correct word form", q: "3. Sometimes, my room is cleaned ______ because I'm in a hurry. (mess)", opts: ["messily", "messy", "mess", "messes"], ans: "messily", tag: "Thỉnh thoảng, căn phòng của tớ được dọn dẹp một cách qua loa bừa bộn vì tớ đang vội.", hint: "Cần điền một trạng từ cách thức đuôi -ly bổ nghĩa cho hành động động từ ở thể bị động 'is cleaned': 'messily'."},
+        {ex: "Exercise 13: Complete with the correct word form", q: "4. Living in my house is a truly ______ experience for me. (wonder)", opts: ["wonderful", "wonder", "wonderfully", "wonders"], ans: "wonderful", tag: "Sống trong ngôi nhà của chính mình là một trải nghiệm thực sự tuyệt vời đối với tớ.", hint: "Vị trí đứng trước danh từ chính 'experience' đòi hỏi một tính từ bổ nghĩa cho bản chất sự vật: 'wonderful'."},
+        {ex: "Exercise 13: Complete with the correct word form", q: "5. I walk ______ every day to the bus stop from my house. (near)", opts: ["nearly", "near", "nearness", "nearing"], ans: "nearly", tag: "Hầu như ngày nào tớ cũng đi bộ từ nhà ra điểm dừng xe buýt.", hint: "Cần một trạng từ tần suất đứng bổ nghĩa nhấn mạnh trước cụm thời gian 'every day' mang ý nghĩa hầu như/gần như: 'nearly'."},
+
+        // Exercise 14
+        {ex: "Exercise 14: Match the questions with the answers", q: "1. Match the question: 'Are there two bedrooms in your house?'", opts: ["No, there are three.", "He is in the living room.", "I like country house.", "It is my sister's.", "Great idea, Dad."], ans: "No, there are three.", tag: "Có phải có hai phòng ngủ ở trong nhà của bạn không? ➔ Không, có tận ba phòng cơ.", hint: "Câu hỏi nghi vấn bắt đầu bằng 'Are there...' chỉ số lượng đồ vật, câu trả lời phù hợp phản hồi bằng số đếm đính chính lượng phòng."},
+        {ex: "Exercise 14: Match the questions with the answers", q: "2. Match the sentence: 'How about putting the lamp behind the sofa?'", opts: ["Great idea, Dad.", "No, there are three.", "He is in the living room.", "I like country house.", "It is my sister's."], ans: "Great idea, Dad.", tag: "Hay là tụi mình đặt chiếc đèn ở phía sau ghế sô-pha đi? ➔ Ý tưởng tuyệt vời đấy bố ạ.", hint: "Cấu trúc gợi ý đưa ra ý kiến đóng góp 'How about + V-ing...?' nhận lại lời phản hồi đồng tình, hưởng ứng: 'Great idea'."},
+        {ex: "Exercise 14: Match the questions with the answers", q: "3. Match the question: 'Where is John now?'", opts: ["He is in the living room.", "No, there are three.", "I like country house.", "It is my sister's.", "Great idea, Dad."], ans: "He is in the living room.", tag: "Bây giờ John đang ở đâu thế? ➔ Cậu ấy đang ở trong phòng khách.", hint: "Câu hỏi hỏi vị trí không gian địa điểm bằng từ hỏi 'Where' đòi hỏi câu trả lời chỉ rõ căn phòng chức năng cụ thể."},
+        {ex: "Exercise 14: Match the questions with the answers", q: "4. Match the question: 'What type of house do you like?'", opts: ["I like country house.", "No, there are three.", "He is in the living room.", "It is my sister's.", "Great idea, Dad."], ans: "I like country house.", tag: "Cậu yêu thích kiểu mô hình nhà ở nào? ➔ Tớ thích nhà ở vùng nông thôn.", hint: "Câu hỏi sở thích thể loại kiến trúc 'What type of house...?' tương ứng câu trả lời giới thiệu danh từ loại nhà 'country house'."},
+        {ex: "Exercise 14: Match the questions with the answers", q: "5. Match the question: 'Whose notebook is it?'", opts: ["It is my sister's.", "No, there are three.", "He is in the living room.", "I like country house.", "Great idea, Dad."], ans: "It is my sister's.", tag: "Cuốn vở này là của ai thế? ➔ Nó là của chị gái tớ.", hint: "Câu hỏi về chủ quyền quyền sở hữu bắt đầu bằng từ hỏi 'Whose' đòi hỏi câu trả lời chứa dạng sở hữu cách bổ nghĩa ('my sister's')."}
+    ];
+
+    function xaoTronMang(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const quizCompiledData = questionsRawData.map((item, index) => {
+        let optionsShuffled = [...item.opts];
+        if (item.opts.length > 2) {
+            xaoTronMang(optionsShuffled);
+        }
+
+        let step1 = `<strong>Bước 1: Dịch nghĩa câu hỏi & ngữ cảnh gốc:</strong><br><em>"${item.q}"</em><br>➔ Ý nghĩa câu trọn vẹn: <strong>${item.tag}</strong>`;
+        let step2 = `<br><strong>Bước 2: Phân tích hiển thị ý nghĩa của các phương án lựa chọn:</strong><br>`;
+        optionsShuffled.forEach((opt, idx) => {
+            let letter = String.fromCharCode(65 + idx);
+            let status = opt === item.ans ? " (Đáp án chính xác)" : " (Phương án bẫy gây nhiễu)";
+            step2 += `- Lựa chọn ${letter}. <strong>${opt}</strong>${status}<br>`;
+        });
+        let step3 = `<br><strong>Bước 3: Tại sao đáp án này là đúng?</strong><br>Lựa chọn phương án câu chứa cụm từ <strong>"${item.ans}"</strong> hoàn toàn chính xác do thỏa mãn trực tiếp quy luật ngữ pháp kiến thức nền tảng: ${item.hint}`;
+        let step4 = `<br><strong>Bước 4: Tại sao các đáp án còn lại SAI?</strong><br>Các phương án nhiễu còn lại bị loại bỏ trực tiếp do sử dụng sai cấu trúc sở hữu cách danh từ số nhiều, chọn sai giới từ chỉ không gian tiếp xúc bề mặt, hoặc tạo nên ngữ nghĩa mâu thuẫn từ vựng không ăn khớp văn cảnh câu hỏi gốc.`;
+
+        return {
+            id: index + 1,
+            exerciseName: item.ex,
+            questionText: item.q,
+            options: optionsShuffled,
+            correctIndex: optionsShuffled.indexOf(item.ans),
+            explanationHTML: `${step1}<br>${step2}${step3}<br>${step4}`
+        };
+    });
+
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    function playSoundFeedback(status) {
+        if (audioContext.state === 'suspended') audioContext.resume();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        if (status === 'correct') {
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.08);
+            gainNode.gain.setValueAtTime(0.25, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.35);
+            oscillator.start(); oscillator.stop(audioContext.currentTime + 0.35);
+            confetti({ particleCount: 40, spread: 45, origin: { y: 0.85 } });
+        } else {
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(140, audioContext.currentTime);
+            oscillator.frequency.linearRampToValueAtTime(70, audioContext.currentTime + 0.35);
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.35);
+            oscillator.start(); oscillator.stop(audioContext.currentTime + 0.35);
+        }
+    }
+
+    let currentScore = 0;
+    const answeredTracker = new Set();
+
+    function initQuizApp() {
+        const zone = document.getElementById('quiz-load-zone');
+        let activeExercise = "";
+
+        quizCompiledData.forEach((q, index) => {
+            if (q.exerciseName !== activeExercise) {
+                activeExercise = q.exerciseName;
+                const titleBlock = document.createElement('div');
+                titleBlock.className = 'exercise-header';
+                titleBlock.innerText = activeExercise;
+                zone.appendChild(titleBlock);
+            }
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            card.innerHTML = `
+                <div class="question-text">Câu ${index + 1}: ${q.questionText}</div>
+                <div class="options-layout" id="box-${q.id}">
+                    ${q.options.map((opt, i) => `
+                        <button class="btn-opt" onclick="clickVerifyAnswer(${q.id}, ${i}, this)">${optionLetters[i]}. ${opt}</button>
+                    `).join('')}
+                </div>
+                <div class="explanation-panel" id="panel-${q.id}">
+                    <strong style="color: #2e7d32; font-size: 1.1em;">🌿 HỆ THỐNG PHÂN TÍCH NGỮ PHÁP 4 BƯỚC CHUYÊN SÂU:</strong><br><br>${q.explanationHTML}
+                </div>
+            `;
+            zone.appendChild(card);
+        });
+    }
+
+    window.clickVerifyAnswer = function(qId, selectedIdx, btn) {
+        if (answeredTracker.has(qId)) return;
+        answeredTracker.add(qId);
+
+        const q = quizCompiledData.find(item => item.id === qId);
+        const box = document.getElementById(`box-${qId}`);
+        const buttons = box.getElementsByTagName('button');
+        const panel = document.getElementById(`panel-${qId}`);
+
+        if (selectedIdx === q.correctIndex) {
+            btn.classList.add('correct');
+            playSoundFeedback('correct');
+            currentScore++;
+        } else {
+            btn.classList.add('wrong');
+            buttons[q.correctIndex].classList.add('correct');
+            playSoundFeedback('wrong');
+        }
+
+        panel.style.display = 'block';
+    }
+
+    window.nopBaiVaChamDiem = function() {
+        const overlay = document.getElementById('result-overlay');
+        const scoreDisplay = document.getElementById('txt-diem');
+        const commentDisplay = document.getElementById('txt-nhan-xet');
+        const performancePercentage = (currentScore / quizCompiledData.length) * 100;
+
+        scoreDisplay.innerText = `Điểm số của con: ${currentScore} / ${quizCompiledData.length} câu đúng`;
+
+        if (performancePercentage < 50) {
+            commentDisplay.innerText = "Ms Lê Hằng nhắn nhủ: “Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”";
+        } else if (performancePercentage <= 85) {
+            commentDisplay.innerText = "Ms Lê Hằng nhắn nhủ: “Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”";
+        } else {
+            commentDisplay.innerText = "Ms Lê Hằng nhắn nhủ: “Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!”";
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.4 } });
+        }
+
+        overlay.style.display = 'flex';
+    }
+
+    initQuizApp();
+</script>
+</body>
+</html>
